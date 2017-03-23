@@ -84,7 +84,8 @@ get '/guess' do
 end
 
 get '/comp_guess' do
-  Mastermind.new
+  @@game = Mastermind.new
+  @@guesses_remaining = 12
   @@temp = []
   @numbers = ["1", "2", "3", "4", "5", "6"]
   @possible_guesses = @numbers.repeated_permutation(4).to_a
@@ -96,7 +97,7 @@ get '/comp_guess' do
   @@counts = []
   @@player_name = "computer"
   @@guess = ["1", "1", "2", "2"]
-
+  @@computer_guesses << @@guess
 
   until @@guess == @@player_code
 
