@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <head>
+      <style>
+        body {
+          background: #a6d4ff;
+        }
+        .formbox {
+          background: #FFF;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 20px;
+          width: 500px;
+          text-align: center;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: 10px;
+          display: block;
+          font: helvetica;
+          font-family: sans-serif;
+        }
+        h1 {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -90px;
+          width: 500px;
+          height: 50px;
+          background-color: #19394d;
+          padding-top: 100px;
+          border-radius: 10px;
+        }
+
+        #title {
+          margin-top: auto;
+          margin-bottom: 10px;
+          color: #FFF;
+          font-family: sans-serif;
+          font: helvetica;
+          text-align: center;
+        }
+
+        input {
+          width: 150px;
+        }
+
+        #game_type {
+          padding: 10px;
+          display: inline-block;
+          align-content: space-between;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+      </style>
+    </head>
+    <h1>
+      <p id="title"><a href="/">Mastermind</a></p>
+    </h1>
+    <div class="formbox">
+      <p>
+        <a>You have chosen Code Maker</p>
+        <a>Enter your secret code. Choose 4 digits from 1 to 6.</a>
+      </p>
+      <form method="GET" action="/comp_guess">
+        <input type="text" name="code" >
+        <input type='submit' value="Submit"/>
+      </form>
+      <br>
+      <form action="/">
+        <input type="submit" value="Back"/>
+      </form>
+
+    </div>
+  </body>
+</html>

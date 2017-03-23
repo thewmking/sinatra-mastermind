@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #a6d4ff;
+      }
+      .formbox {
+        background: #FFF;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        width: 500px;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        display: block;
+        font: helvetica;
+        font-family: sans-serif;
+      }
+      h1 {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -90px;
+        width: 500px;
+        height: 50px;
+        background-color: #19394d;
+        padding-top: 100px;
+        border-radius: 10px;
+      }
+
+      #title {
+        margin-top: auto;
+        margin-bottom: 10px;
+        color: #FFF;
+        font-family: sans-serif;
+        font: helvetica;
+        text-align: center;
+      }
+
+      input {
+        width: 150px;
+      }
+
+      #game_type {
+        padding: 10px;
+        display: inline-block;
+        align-content: space-between;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>
+      <p id="title"><a href="/">Mastermind</a></p>
+    </h1>
+    <div class="formbox">
+      <p>
+        <a>Welcome to Mastermind!</p>
+        <a>Choose your game!</p>
+      </p>
+      <form method="POST" action="/maker">
+        <input type='submit' value="Code Maker"/>
+      </form>
+
+      <form method="GET" action="/breaker">
+        <input type='submit' value="Code Breaker"/>
+      </form>
+      <div id="game_type">
+        <p>
+          <strong>Code Maker</strong>:
+          Choose your 4 digit code and make the computer guess!
+        </p>
+        <p>
+          <strong>Code Breaker</strong>: You get 12 attempts to break the secret code and prove yourself to be a MASTERMIND.
+          After each guess, you will see how many digits are in the correct position or are correct, but out of position.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

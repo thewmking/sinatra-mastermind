@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <head>
+      <style>
+        body {
+          background: #a6d4ff;
+        }
+        .formbox {
+          background: #FFF;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 20px;
+          width: 500px;
+          text-align: center;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-radius: 10px;
+          display: block;
+          font: helvetica;
+          font-family: sans-serif;
+        }
+        h1 {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: -90px;
+          width: 500px;
+          height: 50px;
+          background-color: #19394d;
+          padding-top: 100px;
+          border-radius: 10px;
+        }
+
+        #title {
+          margin-top: auto;
+          margin-bottom: 10px;
+          color: #FFF;
+          font-family: sans-serif;
+          font: helvetica;
+          text-align: center;
+        }
+
+        input {
+          width: 150px;
+        }
+
+        #game_type {
+          padding: 10px;
+          display: inline-block;
+          align-content: space-between;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+      </style>
+    </head>
+    <h1>
+      <p id="title"><a href="/">Mastermind</a></p>
+    </h1>
+    <div class="formbox">
+      <p>
+        <a>Code Breaker</p>
+        <!--<a>The master code is <%= @@master_code %></a>-->
+        <br>
+          <a>You guessed <%= @@guesses %></a>
+        <br>
+          <a>Feedback: <%= @@counts %></a>
+        <br>
+        <a>Correct: <%= @@prev_count[0] %></a>
+        <br>
+        <a>Out of position: <%= @@prev_count[1] %></a>
+        <br>
+        <a><%= @message %></a>
+        <br>
+        <a><%= @@guesses_remaining %> guesses left</a>
+      </p>
+      <form method="GET" action="/guess">
+        <input type="text" name="code" >
+        <input type='submit' value="Guess again!"/>
+      </form>
+      <br>
+      <form action="/breaker">
+        <input type="submit" value="Back"/>
+      </form>
+
+    </div>
+  </body>
+</html>
