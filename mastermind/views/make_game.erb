@@ -64,16 +64,25 @@
         <a>Code Maker</p>
         <a>Your Secret Code is <%= @@player_code %></a>
         <br>
-        <a>The computer guessed <%= @@guess %> with <%= @@guesses_remaining%> guesses remaining</a>
+        <a>The computer guessed:</a>
         <br>
-        <a><%= @message %></a>
+        <%= @@computer_guesses[0]%>
+        <br>
+        <%= @@computer_guesses[1]%>
+        <br>
+        <%= @@computer_guesses[2]%>
+        <br>
+        <%= @@computer_guesses[3]%>
+        <br>
+        <a>The computer guessed your code with only <%= 12-@@guesses_remaining%> guesses!</a>
+
       </p>
-      <form method="GET" action="/make_game">
+      <form method="GET" action="/comp_guess">
         <input type="text" name="code" >
-        <input type='submit' value="Submit"/>
+        <input type='submit' value="Play again"/>
       </form>
       <br>
-      <form action="/maker">
+      <form action="/">
         <input type="submit" value="Back"/>
       </form>
 

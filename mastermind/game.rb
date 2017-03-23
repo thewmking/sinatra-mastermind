@@ -3,6 +3,26 @@ require 'sinatra/reloader' if development?
 
 enable :sessions
 
+def guess_check(guess, code)
+  @@temp = code.dup
+  @@correct = 0
+  @@position = 0
+  for i in (0..3)
+    if (guess[i] == @@temp[i])
+      @@correct += 1
+      @@temp[i] = "x"
+    end
+  end
+
+  for j in (0..3)
+    if guess.include?(@@temp[j])
+      @@position += 1
+    end
+  end
+  @current_count = [@@correct, @@position]
+  return @current_count
+end
+
 get '/' do
   erb :index
 end
@@ -68,13 +88,15 @@ get '/comp_guess' do
   @@temp = []
   @numbers = ["1", "2", "3", "4", "5", "6"]
   @possible_guesses = @numbers.repeated_permutation(4).to_a
-  @computer_guesses = []
+  @@computer_guesses = []
   @@player_code = params['code']
   @@player_code = @@player_code.split("")
   @current_count = []
   @@prev_count = []
+  @@counts = []
   @@player_name = "computer"
   @@guess = ["1", "1", "2", "2"]
+
 
   until @@guess == @@player_code
 
@@ -84,7 +106,7 @@ get '/comp_guess' do
         @current_count != @@prev_count
       end
       @@guess = @possible_guesses.sample
-      @computer_guesses << @@guess
+      @@computer_guesses << @@guess
       Game.check(@@guess, @@player_code)
       @@game.turn
 
@@ -94,13 +116,13 @@ end
 
 
 get '/make_game' do
-  @computer_guesses
-  message = "The computer guessed #{@computer_guesses}"
+  @@computer_guesses
+  message = "The computer guessed #{@@computer_guesses}"
   erb :make_game, :locals => {
     :player_code => @@player_code,
     :guesses_remaining => @@guesses_remaining,
     :guess => @guess, :temp => @@temp,
-    :computer_guesses => @computer_guesses,
+    :computer_guesses => @@computer_guesses,
     :message => message
     }
 end
@@ -120,7 +142,7 @@ helpers do
       @@correct = 0
       @@position = 0
       @@master_code = []
-      @computer_guesses = []
+      @@computer_guesses = []
       4.times do
         @@master_code << rand(1..6).to_s
       end
@@ -128,6 +150,7 @@ helpers do
       @@prev_count = []
       @game = Game.new
     end
+
 
     def turn
       @@guesses_remaining -= 1
